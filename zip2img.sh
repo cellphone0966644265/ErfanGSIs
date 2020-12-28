@@ -226,7 +226,7 @@ elif [[ $(7z l -ba $romzip | grep payload.bin) ]]; then
     echo "AB OTA detected"
     7z e -y $romzip payload.bin 2>/dev/null >> $tmpdir/zip.log
     for partition in $PARTITIONS; do
-        python $payload_extractor payload.bin --partitions $partition --output_dir $tmpdir > $tmpdir/extract.log
+        python3 $payload_extractor payload.bin --partitions $partition --output_dir $tmpdir > $tmpdir/extract.log
         if [[ -f "$tmpdir/$partition" ]]; then
             mv "$tmpdir/$partition" "$outdir/$partition.img"
         fi
